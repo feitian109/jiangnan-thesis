@@ -2,7 +2,7 @@
 
 江南大学毕业论文（设计）的 Typst 模板，由 [modern-nju-thesis](https://github.com/nju-lug/modern-nju-thesis) 二次开发而来
 
-![](imgs/editor.png)
+![](https://pic.imgdb.cn/item/662bb9ba0ea9cb14039abd65.png)
 
 ## 特性
 
