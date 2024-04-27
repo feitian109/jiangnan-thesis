@@ -11,7 +11,6 @@
   stoke-width: 1pt,
   min-title-lines: 2,
   info-inset: (x: 0pt, y: -1pt),
-  info-key-width: 90pt,
   info-key-font: "宋体",
   info-value-font: "黑体",
   row-gutter: 24pt,
@@ -134,10 +133,8 @@
 
   set grid(row-gutter: row-gutter)
 
-  block(
-    width: 92%,
-    grid(
-      columns: (info-key-width, 1fr, 1fr, 1fr),
+  block(width: 92%,grid(
+      columns: (70pt, 1fr, 1fr, 1fr),
       info-key("title"),
       ..info.title.map((s) => info-long-value("title", s)).intersperse(info-key("blank")),
     ),
@@ -145,8 +142,8 @@
 
   v(42pt)
 
-  block(width: 77%, grid(
-    columns: (1.9fr, 48pt, 1fr, 48pt),
+  block(width: 90%, grid(
+    columns: (2fr, 48pt, 1fr, 48pt),
     info-short-value("department", info.department),
     info-key("department"),
     info-short-value("major", info.major),
@@ -158,7 +155,7 @@
   block(
     width: 60%,
     grid(
-      columns: (info-key-width, 1fr, 1fr, 1fr),
+      columns: (90pt, 1fr, 1fr, 1fr),
       info-key("student-id"),
       info-long-value("student-id", info.student-id),
       info-key("author"),
@@ -178,5 +175,5 @@
 
   set text(size: 字号.小二)
   text(font: fonts.黑体)[二〇]
-  text(font: fonts.宋体)[　　年 月 ]
+  text(font: fonts.宋体)[　　年　月]
 }
