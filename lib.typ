@@ -34,7 +34,7 @@
     student-id: "34567890",
     author: "梁溪媛",
     supervisor: ("常广溪", "教授"),
-    supervisor-ii: ("江南", "讲师"),
+    supervisor-ii: (),
   ) + info
 
   // 预处理部分

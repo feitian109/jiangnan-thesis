@@ -46,9 +46,11 @@
   if (tmp.len() == 6) {
     info.supervisor.at(0) = tmp.first() + "　" + tmp.last()
   }
-  let tmp = info.supervisor-ii.at(0)
-  if (tmp.len() == 6) {
-    info.supervisor-ii.at(0) = tmp.first() + "　" + tmp.last()
+  if info.supervisor-ii != (){
+    let tmp = info.supervisor-ii.at(0)
+    if (tmp.len() == 6) {
+      info.supervisor-ii.at(0) = tmp.first() + "　" + tmp.last()
+    }
   }
 
   // 3.  内置辅助函数
@@ -162,12 +164,12 @@
       info-long-value("author", info.author),
       info-key("supervisor"),
       info-long-value("supervisor", info.supervisor.at(0) + "  " + info.supervisor.at(1)),
-      ..(if info.supervisor-ii != () {
-        (info-key("supervisor-ii"), info-long-value(
-          "supervisor-ii",
-          info.supervisor-ii.at(0) + "  " + info.supervisor-ii.at(1),
-        ),)
-      } else {}),
+      info-key("supervisor-ii"), 
+      (if info.supervisor-ii != () {
+        info-long-value("supervisor-ii", info.supervisor-ii.at(0) + "  " + info.supervisor-ii.at(1))
+      } else {
+        info-long-value("supervisor-ii","")
+      }),
     ),
   )
 
