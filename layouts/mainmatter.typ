@@ -152,7 +152,7 @@
                 align(
                   center,
                   stack(
-                    if (calc.odd(loc.page())) { (("",) + info.title).sum() } else [江南大学学士学位论文],
+                    if (calc.odd(loc.page())) { (("",) + info.title).sum() } else {info.doc-title},
                     v(0.4em),
                     line(length: 100%, stroke: stroke-width + black),
                   ),

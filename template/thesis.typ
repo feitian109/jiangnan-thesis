@@ -9,19 +9,21 @@
   // 页面函数
   fonts-display-page, cover, abstract, abstract-en, bilingual-bibliography, outline-page, acknowledgement,
 ) = documentclass(
-  // display-header: false, // 关闭页眉
-  // anonymous: true, // 盲审模式
+  // doctype: "bachelor", // 文档类型可设为 bachelor 或 coursework
   twoside: false, // 双面打印，江南大学本科毕业设计要求双面打印，此文档为了方便浏览将其设为 `false`
   // 可自定义字体，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   // fonts: (宋体: ("Times New Roman", "Source Han Serif SC"), 黑体:("Arial", "Source Han Sans SC")),
   info: (
     title: ("本科毕业设计（论文）题目", "此行若无内容，横线保留"),
+    doc-title: "江南大学学士学位论文",
     department: "通信与控制工程",
     major: "自动化",
     student-id: "34567890",
     author: "梁溪媛",
     supervisor: ("常广溪", "教授"),
     supervisor-ii: ("江南", "讲师"),
+    year: 2024,
+    month: 4,
   )
 )
 
