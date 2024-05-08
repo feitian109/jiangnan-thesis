@@ -1,6 +1,6 @@
 # 江南大学学位论文 jiangnan-thesis
 
-江南大学毕业论文（设计）的 Typst 模板，由 [modern-nju-thesis](https://github.com/nju-lug/modern-nju-thesis) 二次开发而来
+江南大学毕业论文（设计）的 Typst 模板，由 [modern-nju-thesis](https://github.com/nju-lug/modern-nju-thesis) fork而来
 
 ![](imgs/editor.png)
 
@@ -16,7 +16,7 @@ Typst 源文件： [template\thesis.typ](https://github.com/feitian109/jiangnan-
 - 支持关闭页眉
 - 支持双面打印
 - 支持自定义字体
-- 目前仅支持**本科生**毕业论文（设计）和 课程设计
+- 目前仅支持 **本科生毕业论文（设计)** 和 **课程设计**
 
 ## 上手（推荐使用VS Code）
 
