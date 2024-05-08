@@ -8,10 +8,13 @@
   margin: (2cm),
   it,
 ) = {
-  // 1.  基本的样式设置
+  // 1.  设置纸张
+  set page(paper: "a4")
+
+  // 2.  基本的样式设置
   set text(fallback: fallback, lang: lang)
 
-  // 2.  PDF 目录和元信息
+  // 3.  PDF 目录和元信息
   set heading(bookmarked: true)
   set document(title: (("",) + info.title).sum(), author: info.author)
   

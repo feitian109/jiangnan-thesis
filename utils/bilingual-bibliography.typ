@@ -125,9 +125,5 @@
   }
 
   set text(lang: "zh")
-  bibliography(
-    title: title,
-    full: full,
-    style: style,
-  )
+  bibliography(title: title, full: full, style: style)
 }
