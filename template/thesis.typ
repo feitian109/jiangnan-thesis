@@ -10,6 +10,7 @@
   fonts-display-page, cover, abstract, abstract-en, bilingual-bibliography, outline-page, acknowledgement,
 ) = documentclass(
   // doctype: "bachelor", // 文档类型可设为 bachelor 或 coursework
+  // compact: false, // 压缩模式，标题不再换页
   twoside: false, // 双面打印，江南大学本科毕业设计要求双面打印，此文档为了方便浏览将其设为 `false`
   // 可自定义字体，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   // fonts: (宋体: ("Times New Roman", "Source Han Serif SC"), 黑体:("Arial", "Source Han Sans SC")),

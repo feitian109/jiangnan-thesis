@@ -24,7 +24,7 @@
   doctype: "bachelor",
   display-header: true, // 显示页眉
   twoside: true, // 双面模式，会加入空白页，便于打印
-  anonymous: false, // 盲审模式
+  compact: false,
   bibliography: none, // 参考文献函数
   fonts: (:), // 字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   info: (:),
@@ -69,6 +69,7 @@
     doctype: doctype,
     display-header: display-header,
     twoside: twoside,
+    compact: compact,
     bibliography: bibliography,
     fonts: fonts,
     info: info,
@@ -85,6 +86,7 @@
       mainmatter(
         ..args,
         twoside: twoside,
+        compact: compact,
         display-header: display-header,
         fonts: fonts + args.named().at("fonts", default: (:)),
         info: info + args.named().at("info", default: (:)),

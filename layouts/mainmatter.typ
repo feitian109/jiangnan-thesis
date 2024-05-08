@@ -7,6 +7,7 @@
 #let mainmatter(
   // documentclass 传入参数
   twoside: false,
+  compact: false,
   fonts: (:),
   info: (:),
   // 其他参数
@@ -105,27 +106,23 @@
     fake-par
   }
   // 4.3 标题居中与自动换页
-  show heading.where(level: 1): it =>{
-    if (twoside) {
-      // 如果打上了 no-2side-pagebreak 标签，则不会强制奇数页开始
-      if (
-        "label" not in it.fields() or (
-          str(it.label) != "no-2side-pagebreak" and str(it.label) != "no-auto-pagebreak"
-        )
-      ) {
-        pagebreak(to: "odd")
-      }
-    }
-    it
-  }
-
   show heading: it => {
     if (array-at(heading-pagebreak, it.level)) {
+      // 如果打上了 no-2side-pagebreak 标签，则不会强制奇数页开始
       // 如果打上了 no-auto-pagebreak 标签，则不自动换页
-      if ("label" not in it.fields() or str(it.label) != "no-auto-pagebreak") {
-        pagebreak(weak: true)
+      if (compact) {} else if (twoside) {
+        if "label" in it.fields() and str(it.label) == "no-2side-pagebreak" {
+          pagebreak(weak: true)
+        } else if "label" in it.fields() and str(it.label) == "no-auto-pagebreak" {} else {
+          pagebreak(to: "odd")
+        }
+      } else {
+        if "label" in it.fields() and str(it.label) == "no-auto-pagebreak" {} else {
+          pagebreak(weak: true)
+        }
       }
     }
+
     if (array-at(heading-align, it.level) != auto) {
       set align(array-at(heading-align, it.level))
       it
@@ -152,7 +149,7 @@
                 align(
                   center,
                   stack(
-                    if (calc.odd(loc.page())) { (("",) + info.title).sum() } else {info.doc-title},
+                    if (calc.odd(loc.page())) { (("",) + info.title).sum() } else { info.doc-title },
                     v(0.4em),
                     line(length: 100%, stroke: stroke-width + black),
                   ),
@@ -171,7 +168,7 @@
 
   set page(footer: context[
     #set align(center)
-    #set text(font:fonts.宋体, size: 字号.五号)
+    #set text(font: fonts.宋体, size: 字号.五号)
     #counter(page).display("1")
   ])
   counter(page).update(1)

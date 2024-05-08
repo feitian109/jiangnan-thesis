@@ -14,6 +14,7 @@ Typst 源文件： [template\thesis.typ](https://github.com/feitian109/jiangnan-
 ## 特性
 
 - 支持关闭页眉
+- 支持压缩模式（一级标题不再换页）
 - 支持双面打印
 - 支持自定义字体
 - 目前仅支持 **本科生毕业论文（设计)** 和 **课程设计**
