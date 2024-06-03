@@ -3,7 +3,6 @@
 // 本科生封面
 #let bachelor-cover(
   // documentclass 传入的参数
-  anonymous: false,
   twoside: true,
   fonts: (:),
   info: (:),
@@ -14,7 +13,6 @@
   info-key-font: "宋体",
   info-value-font: "黑体",
   row-gutter: 24pt,
-  anonymous-info-value: ("grade", "student-id", "author", "supervisor", "supervisor-ii"),
   bold-level: 600,
 ) = {
   // 1.  默认参数
@@ -72,8 +70,8 @@
         bottom-edge: "descender",
         if key not in center-info-value {
           if key == "title" {
-            let tmp = int((16 - info.title.at(0).len() / 3) / 2)
-            "　" * tmp
+            let autospace = int((16 - info.title.at(0).len() / 3) / 2)
+            "　" * autospace
           } else {
             "　" * 3
           }
@@ -85,20 +83,12 @@
   let info-long-value(key, body) = {
     grid.cell(
       colspan: 3,
-      info-value(key, if anonymous and (key in anonymous-info-value) {
-        "██████████"
-      } else {
-        body
-      }),
+      info-value(key, body),
     )
   }
 
   let info-short-value(key, body) = {
-    info-value(key, if anonymous and (key in anonymous-info-value) {
-      "█████"
-    } else {
-      body
-    })
+    info-value(key, body)
   }
 
   // 4.  正式渲染
@@ -108,17 +98,12 @@
   // 居中对齐
   set align(center)
 
-  // 匿名化处理去掉封面标识
-  if anonymous {
-    v(88pt)
-  } else {
-    h(18em)
-    text(size: 字号.小四, font: fonts.宋体, weight: bold-level)[编 号]
-    v(42pt)
-    // 校名
-    image("../assets/vi/jnu-name.png")
-    v(42pt)
-  }
+  h(18em)
+  text(size: 字号.小四, font: fonts.宋体, weight: bold-level)[编 号]
+  v(42pt)
+  // 校名
+  image("../assets/vi/jnu-name.png")
+  v(42pt)
 
   text(
     size: 32pt,
@@ -127,11 +112,7 @@
     weight: bold-level,
   )[本 科 生 毕 业 设 计 （ 论 文 ）]
 
-  if anonymous {
-    v(155pt)
-  } else {
-    v(42pt)
-  }
+  v(42pt)
 
   set grid(row-gutter: row-gutter)
 

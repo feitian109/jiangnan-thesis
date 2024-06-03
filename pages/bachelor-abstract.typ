@@ -5,7 +5,6 @@
 // 本科生中文摘要页
 #let bachelor-abstract(
   // documentclass 传入的参数
-  anonymous: false,
   twoside: true,
   fonts: (:),
   info: (:),
