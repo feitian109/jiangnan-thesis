@@ -8,26 +8,21 @@
   twoside: true,
   fonts: (:),
   info: (:),
+  display-header: true,
   // 其他参数
-  stroke-width: 0.5pt,
   keywords: (),
+  stroke-width: 0.5pt,
   outline-title: "ABSTRACT",
   outlined: false,
   leading: 1em,
-  spacing: 1em,
-  bold-level: 600,
-  display-header: true,
-  header-render: auto,
-  header-vspace: 0em,
+  spacing: 1.25em,
+  bold-level: "bold",
   body,
 ) = {
-  // 1.  默认参数
-  fonts = 字体 + fonts
-
-  // 2.  正式渲染
+  // 1.  正式渲染
   pagebreak(weak: true, to: if twoside { "even" })
 
-  // 3.  处理页眉
+  // 2.  处理页眉
   set page(..(if display-header {
     (header: {
       set text(font: fonts.宋体, size: 字号.小五)
@@ -47,7 +42,7 @@
   invisible-heading(level: 1, outlined: outlined, outline-title)
 
   align(center)[
-    #text(size: 字号.三号, weight: bold-level)[ABSTRACT]
+    #text(size: 字号.三号, weight: bold-level, top-edge: "x-height")[ABSTRACT]
   ]
 
   fake-par

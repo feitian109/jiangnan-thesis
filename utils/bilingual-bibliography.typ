@@ -6,6 +6,7 @@
   full: true,
   style: "gb-7714-2015-numeric",
   mapping: (:),
+  fonts: (:)
 ) = {
   assert(bibliography != none, message: "请传入带有 source 的 bibliography 函数。")
 

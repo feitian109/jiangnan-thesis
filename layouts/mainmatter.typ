@@ -12,7 +12,7 @@
   info: (:),
   // 其他参数
   leading: 1em,
-  spacing: 1em,
+  spacing: 1.25em,
   justify: true,
   first-line-indent: 2em,
   numbering: custom-numbering.with(first-level: "第1章 ", depth: 4, "1.1 "),
@@ -21,9 +21,9 @@
   // 标题字体与字号
   heading-font: auto,
   heading-size: (字号.三号, 字号.四号, 字号.小四),
-  heading-weight: (600,),
-  heading-above: (1em, 1em),
-  heading-below: (1em, 1em),
+  heading-weight: ("bold",),
+  heading-above: (1.25em, 1.25em),
+  heading-below: (1.25em, 1.25em),
   heading-pagebreak: (true, false),
   heading-align: (center, auto),
   // 页眉
@@ -43,7 +43,6 @@
   it,
 ) = {
   // 1.  默认参数
-  fonts = 字体 + fonts
   if (text-args == auto) {
     text-args = (font: fonts.宋体, size: 字号.小四)
   }
@@ -97,6 +96,7 @@
       weight: array-at(heading-weight, it.level),
       ..unpairs(heading-text-args-lists
       .map((pair) => (pair.at(0), array-at(pair.at(1), it.level)))),
+      top-edge: "x-height"
     )
     set block(
       above: array-at(heading-above, it.level),

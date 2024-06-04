@@ -11,11 +11,9 @@
 #import "pages/coursework-cover.typ": coursework-cover
 #import "pages/acknowledgement.typ": acknowledgement
 
-#import "utils/custom-cuti.typ": *
 #import "utils/bilingual-bibliography.typ": bilingual-bibliography
-#import "utils/custom-numbering.typ": custom-numbering
 #import "utils/indent.typ": indent
-#import "@preview/i-figured:0.2.4": show-figure, show-equation
+#import "utils/hline.typ": hline
 #import "utils/style.typ": 字体, 字号
 
 // 使用函数闭包特性，通过 `documentclass` 函数类进行全局信息配置，然后暴露出拥有了全局配置的、具体的 `layouts` 和 `templates` 内部函数。
@@ -155,11 +153,14 @@
     },
     // 参考文献
     bilingual-bibliography: (..args) => {
-      bilingual-bibliography(..args)
+      bilingual-bibliography(..args,
+      fonts: fonts + args.named().at("fonts", default: (:)),)
     },
     // 致谢
     acknowledgement: (..args) => {
-      acknowledgement(..args)
+      acknowledgement(..args,
+      fonts: fonts + args.named().at("fonts", default: (:))
+      )
     },
   )
 }

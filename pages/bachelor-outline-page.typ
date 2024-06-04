@@ -12,35 +12,23 @@
   depth: 4,
   outline-title: "目录",
   outlined: false,
-  title-vspace: 0pt,
-  title-text-args: auto,
   // 引用页数的字体，这里用于显示 Times New Roman
   reference-font: auto,
   reference-size: 字号.小四,
   // 字体与字号
-  font: auto,
-  size: (14pt, 13pt, 12pt),
+  size: (14pt, 13pt, 11pt),
   // 垂直间距
-  vspace: (20pt, 16pt),
+  vspace: (1.25em, 1.25em),
   indent: (0em, 1em, 1em),
   display-header: true,
   // 全都显示点号
   fill: (auto,),
   ..args,
 ) = {
-
   // 1.  默认参数
-  fonts = 字体 + fonts
-  if (title-text-args == auto) {
-    title-text-args = (size: 字号.三号, weight: 600)
-  }
   // 引用页数的字体，这里用于显示 Times New Roman
   if (reference-font == auto) {
     reference-font = fonts.宋体
-  }
-  // 字体与字号
-  if (font == auto) {
-    font = (fonts.黑体, fonts.宋体)
   }
 
   // 2.  正式渲染
@@ -67,12 +55,12 @@
   set text(font: reference-font, size: reference-size)
   set align(center)
 
-  text(..title-text-args, "目　录")
+  text(size: 字号.三号, weight: "bold", top-edge: "x-height", "目　录")
+
+  v(字号.四号 * 1.25)
 
   // 标记一个不可见的标题用于目录生成
   invisible-heading(level: 1, outlined: outlined, outline-title)
-
-  v(title-vspace)
 
   show outline.entry: outrageous.show-entry.with(
     // 保留 Typst 基础样式

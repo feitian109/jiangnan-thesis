@@ -15,17 +15,14 @@
   outline-title: "摘要",
   outlined: false,
   leading: 1em,
-  spacing: 1em,
-  bold-level: 600,
+  spacing: 1.25em,
+  bold-level: "bold",
   body,
 ) = {
-  // 1.  默认参数
-  fonts = 字体 + fonts
-
-  // 2.  正式渲染
+  // 1.  正式渲染
   pagebreak(weak: true, to: if twoside { "odd" })
 
-  // 3.  处理页眉
+  // 2.  处理页眉
   set page(footer: context[
     #set align(center)
     #set text(font: fonts.宋体, size: 字号.五号)
@@ -42,7 +39,7 @@
       ))
     })
   }))
-
+  
   set text(font: fonts.宋体, size: 字号.小四)
   set par(first-line-indent: 2em, leading: leading, justify: true)
   show par: set block(spacing: spacing)
@@ -51,7 +48,7 @@
   invisible-heading(level: 1, outlined: outlined, outline-title)
 
   align(center)[
-    #text(size: 字号.三号, weight: bold-level)[摘　要]
+    #text(size: 字号.三号, weight: bold-level, spacing: 0.5em, top-edge: "x-height")[摘 要]
   ]
 
   fake-par
