@@ -11,7 +11,8 @@
   // doctype: "bachelor", // 文档类型可设为 bachelor 或 coursework
   // display-header: true, // 显示页眉
   // compact: false, // 压缩模式，标题不再换页
-  twoside: false, // 双面打印，江南大学本科毕业设计要求双面打印，此文档为了方便浏览将其设为 `false`
+  // 双面打印，江南大学本科毕业设计要求双面打印，此文档为了方便浏览将其设为 `false`
+  twoside: false, // 开启 `twoside` 的同时会在内侧添加 0.5cm 的装订线
   // 可自定义字体，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   // fonts: (宋体: ("Times New Roman", "SimSun"), 黑体:("Arial", "SimHei")),
   info: (
@@ -24,7 +25,7 @@
     supervisor: ("常广溪", "教授"),
     supervisor-ii: ("江南", "讲师"),
     year: 2024,
-    month: 4,
+    month: 6,
   )
 )
 
@@ -171,7 +172,7 @@ A4幅面，双面印刷；
 = 图与公式的格式要求
 == 图
 === 图及图题标注范例
-Buck变换器是单管不隔离型DC-DC变换器中的一种基本结构#[@于潇2012]，其基本电路如图@fig:example-fig 所示。
+Buck变换器是单管不隔离型DC-DC变换器中的一种基本结构#[@于潇2012]，其基本电路如@fig:example-fig 所示。
 
 #figure(
   image("images/example-figure.png", width: 50%),
@@ -190,7 +191,7 @@ $ U_o = t_"on"/(t_"on" + t_"off") E = t_"on" / T E = u E. $ <physics>
 = 表的格式要求
 == 表的格式
 === 表范例
-数据如表@tbl:example-tbl 所示，表内容字号五号，字体要求与正文同。
+数据如@tbl:example-tbl 所示，表内容字号五号，字体要求与正文同。
 
 #v(1em)
 
@@ -204,7 +205,7 @@ $ U_o = t_"on"/(t_"on" + t_"off") E = t_"on" / T E = u E. $ <physics>
   [数值],
   [参数],
   [数值],
-  table.hline(stroke: .5pt),
+  table.hline(stroke: 0.5pt),
   [R],
   [4$ohm$],
   [L],

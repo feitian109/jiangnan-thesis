@@ -89,8 +89,12 @@
   // 4.  正式渲染
   pagebreak(weak: true, to: if twoside { "odd" })
   set rect(inset: info-inset)
-  set page(margin:(top: 1.65cm, bottom: 2cm, x: 3.17cm))
-
+  set page(margin: if (twoside) {
+    (top: 1.65cm, bottom: 2cm, x: 3.17cm, inside: 2.67cm)
+  } else {
+    (top: 1.65cm, bottom: 2cm, x: 3.17cm)
+  })
+  
   // 居中对齐
   set align(center)
 

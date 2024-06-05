@@ -50,7 +50,7 @@
   let info-key(key) = {
     text(
       font: fonts.at(info-key-font),
-      ..if(key == "tittle") {
+      ..if(key == "title") {
         (weight: bold-level, size: 字号.二号)
       } else {
         (weight: "regular", size: 字号.小二)
@@ -67,10 +67,12 @@
         size: if (key == "title") { 字号.二号 } else { 字号.小二 },
         bottom-edge: "descender",
         if key == "title" {
-          let len = (15 - info.title.at(0).len() / 3) / 2
-          h(1em * len)
-        }
-        else if key in ("student-id", "author", "supervisor", "supervisor-ii") {
+          let len = 0
+          for i in info.title {
+            len = calc.max(len, i.len())
+          }
+          h(1em * (15 - len / 3) / 2)
+        } else if key in ("student-id", "author", "supervisor", "supervisor-ii") {
           h(3em)
         } + body
       )),
@@ -88,7 +90,11 @@
   // 4.  正式渲染
   pagebreak(weak: true, to: if twoside { "odd" })
   set rect(inset: info-inset)
-  set page(margin:(top: 1.65cm, bottom: 2cm, x: 3.17cm))
+  set page(margin: if (twoside) {
+    (top: 1.65cm, bottom: 2cm, x: 3.17cm, inside: 2.67cm)
+  } else {
+    (top: 1.65cm, bottom: 2cm, x: 3.17cm)
+  })
 
   // 居中对齐
   set align(center)

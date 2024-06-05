@@ -77,7 +77,7 @@
     },
     // 前言
     preface: (..args) => {
-      preface(..args, fonts: fonts + args.named().at("fonts", default: (:)))
+      preface(..args, fonts: fonts + args.named().at("fonts", default: (:)),twoside:twoside)
     },
     // 正文
     mainmatter: (..args) => {

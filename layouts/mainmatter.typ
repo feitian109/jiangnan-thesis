@@ -46,6 +46,10 @@
   if (text-args == auto) {
     text-args = (font: fonts.宋体, size: 字号.小四)
   }
+  if (compact) {
+    heading-pagebreak = (false, false)
+  }
+  
   // 1.1 字体与字号
   if (heading-font == auto) {
     heading-font = (fonts.宋体,)
@@ -54,12 +58,12 @@
   let heading-text-args-lists = args.named().pairs()
   .filter((pair) => pair.at(0).starts-with("heading-"))
   .map((pair) => (pair.at(0).slice("heading-".len()), pair.at(1)))
-
+  
   // 2.  辅助函数
   let array-at(arr, pos) = {
     arr.at(calc.min(pos, arr.len()) - 1)
   }
-
+  
   // 3.  设置基本样式
   // 3.1 文本和段落样式
   set text(..text-args)
@@ -80,11 +84,11 @@
   show figure.where(kind: table): set figure.caption(position: top)
   set figure.caption(separator: separator)
   show figure:set text(font: fonts.宋体, size: 字号.五号)
-
+  
   // 3.6 优化列表显示
   //     术语列表 terms 不应该缩进
   show terms: set par(first-line-indent: 0pt)
-
+  
   // 4.  处理标题
   // 4.1 设置标题的 Numbering
   set heading(numbering: numbering)
@@ -96,7 +100,9 @@
       weight: array-at(heading-weight, it.level),
       ..unpairs(heading-text-args-lists
       .map((pair) => (pair.at(0), array-at(pair.at(1), it.level)))),
-      top-edge: "x-height"
+      ..if (it.level == 1){
+        (top-edge:"x-height")
+      }
     )
     set block(
       above: array-at(heading-above, it.level),
@@ -110,7 +116,7 @@
     if (array-at(heading-pagebreak, it.level)) {
       // 如果打上了 no-2side-pagebreak 标签，则不会强制奇数页开始
       // 如果打上了 no-auto-pagebreak 标签，则不自动换页
-      if (compact) {} else if (twoside) {
+      if (twoside) {
         if "label" in it.fields() and str(it.label) == "no-2side-pagebreak" {
           pagebreak(weak: true)
         } else if "label" in it.fields() and str(it.label) == "no-auto-pagebreak" {} else {
@@ -122,7 +128,7 @@
         }
       }
     }
-
+    
     if (array-at(heading-align, it.level) != auto) {
       set align(array-at(heading-align, it.level))
       it
@@ -130,7 +136,7 @@
       it
     }
   }
-
+  
   // 5.  处理页眉
   set page(
     numbering: "1",
@@ -142,7 +148,7 @@
             if reset-footnote {
               counter(footnote).update(0)
             }
-
+            
             locate(
               loc => {
                 set text(font: fonts.宋体, size: 字号.小五)
@@ -165,7 +171,7 @@
       }
     ),
   )
-
+  
   set page(footer: context[
     #set align(center)
     #set text(font: fonts.宋体, size: 字号.五号)
