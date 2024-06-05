@@ -116,7 +116,7 @@
 
   v(字号.一号 * 1.5)
 
-  set grid(row-gutter: 字号.二号 * 1.5)
+  set grid(row-gutter: 字号.二号 * 1.3)
   block(width: 97%, grid(
       columns: (6em, 1fr, 1fr, 1fr),
       info-key("title"),
@@ -126,7 +126,7 @@
 
   v(字号.一号 * 1.5)
 
-  set grid(row-gutter: 字号.小二 * 1.5)
+  set grid(row-gutter: 字号.小二 * 1.3)
   block(width: 90%, grid(
     columns: (1.8fr, 4em, 1fr, 4em),
     info-short-value("department", info.department),
