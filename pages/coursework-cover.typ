@@ -54,8 +54,11 @@
   let info-key(key) = {
     text(
       font: fonts.at(info-key-font),
-      weight: if (key == "title") { bold-level } else { "regular" },
-      size: if (key == "title") { 字号.二号 } else { 字号.小二 },
+      ..if(key == "title") {
+        (weight: bold-level, size: 字号.二号)
+      } else {
+        (weight: "regular", size: 字号.小二)
+      },
       key2body.at(key),
     )
   }
@@ -68,10 +71,12 @@
         size: if (key == "title") { 字号.二号 } else { 字号.小二 },
         bottom-edge: "descender",
         if key == "title" {
-          let len = (15 - info.title.at(0).len() / 3) / 2
-          h(1em * len)
-        }
-        else if key in ("student-id", "author", "supervisor", "supervisor-ii") {
+          let len = 0
+          for i in info.title {
+            len = calc.max(len, i.len())
+          }
+          h(1em * (15 - len / 3) / 2)
+        } else if key in ("student-id", "author", "supervisor", "supervisor-ii") {
           h(3em)
         } + body
       )),
@@ -104,14 +109,14 @@
   text(
     size: 32pt,
     font: fonts.宋体,
-    spacing: 7.5pt,
+    spacing: 2.5pt * 2,
     weight: bold-level,
     info.doc-title
   )
 
   v(120pt)
 
-  set grid(row-gutter: 字号.二号 * 1.5)
+  set grid(row-gutter: 字号.二号 * 1.3)
   block(width: 97%, grid(
       columns: (6em, 1fr, 1fr, 1fr),
       info-key("title"),
@@ -121,7 +126,7 @@
 
   v(字号.一号 * 1.5)
 
-  set grid(row-gutter: 字号.小二 * 1.5)
+  set grid(row-gutter: 字号.小二 * 1.3)
   block(width: 90%, grid(
     columns: (1.8fr, 4em, 1fr, 4em),
     info-short-value("department", info.department),
