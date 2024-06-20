@@ -4,15 +4,15 @@
 
 #let (
   // 布局函数
-  twoside, doc, preface, mainmatter, appendix,
+  doc, preface, mainmatter, appendix,
   // 页面函数
-  fonts-display-page, cover, abstract, abstract-en, bilingual-bibliography, outline-page, acknowledgement,
+  fonts-display-page, cover, abstract, abstract-en, outline-page, bilingual-bibliography, acknowledgement,
 ) = documentclass(
   // doctype: "bachelor", // 文档类型可设为 bachelor 或 coursework
   // display-header: true, // 显示页眉
   // compact: false, // 压缩模式，标题不再换页
   // 双面打印，江南大学本科毕业设计要求双面打印，此文档为了方便浏览将其设为 `false`
-  twoside: false, // 开启 `twoside` 的同时会在内侧添加 0.5cm 的装订线
+  // twoside: false, // 开启 `twoside` 的同时会在内侧添加 0.5cm 的装订线
   // 可自定义字体，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   // fonts: (宋体: ("Times New Roman", "SimSun"), 黑体:("Arial", "SimHei")),
   info: (

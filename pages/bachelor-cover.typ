@@ -90,8 +90,9 @@
   // 4.  正式渲染
   pagebreak(weak: true, to: if twoside { "odd" })
   set rect(inset: info-inset)
+  // 边距
   set page(margin: if (twoside) {
-    (top: 1.65cm, bottom: 2cm, x: 3.17cm, inside: 2.67cm)
+    (top: 1.65cm, bottom: 2cm, inside: 3.17cm + 0.5cm, outside: 3.17cm)
   } else {
     (top: 1.65cm, bottom: 2cm, x: 3.17cm)
   })
@@ -110,21 +111,21 @@
   text(
     size: 32pt,
     font: fonts.宋体,
-    spacing: 2.5pt * 2,
+    spacing: 2.5pt * 1.9,
     weight: bold-level,
   )[本 科 生 毕 业 设 计 （ 论 文 ）]
 
   v(字号.一号 * 1.5)
 
   set grid(row-gutter: 字号.二号 * 1.3)
-  block(width: 97%, grid(
+  grid(
       columns: (6em, 1fr, 1fr, 1fr),
       info-key("title"),
       ..info.title.map((s) => info-long-value("title", s)).intersperse(info-key("blank")),
-    ),
   )
 
-  v(字号.一号 * 1.5)
+
+  v(字号.一号 * 2)
 
   set grid(row-gutter: 字号.小二 * 1.3)
   block(width: 90%, grid(
@@ -135,7 +136,7 @@
     info-key("major"),
   ))
 
-  v(字号.一号 * 1.5)
+  v(字号.一号 * 2)
 
   block(
     width: 73%,
