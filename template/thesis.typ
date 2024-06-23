@@ -10,7 +10,7 @@
 ) = documentclass(
   // doctype: "bachelor", // 文档类型可设为 bachelor 或 coursework
   // display-header: true, // 显示页眉
-  // compact: false, // 压缩模式，标题不再换页
+  // compact: false, // 压缩模式，正文的一级标题不再换页
   // 双面打印，江南大学本科毕业设计要求双面打印，此文档为了方便浏览将其设为 `false`
   twoside: false, // 开启 `twoside` 的同时会在内侧添加 0.5cm 的装订线
   // 可自定义字体，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
@@ -253,7 +253,7 @@ XXX
 // typst 不支持加载两个bib，因此你只能在这里手打自己的成果
 [1]作者．文献题名[J]．刊名，出版年份，卷号(期号) ：起止页码．
 
-// 可以在正文后的一级标题后添加 `no-2side-pagebreak` 的 lable，作用是在 `twoside = ture` 时，该页不会强制在奇数页开始
-// 同时也有 `no-auto-pagebreak` 的 label，其在任何模式都生效，作用是使一级标题不换页
+// 可以在一级标题后添加 `no-2side-pagebreak` 的 lable，作用是当 `twoside` 选项启用时，该标题不会强制在奇数页开始
+// 同时也有 `no-auto-pagebreak` 的 label，其在任何模式都生效，作用是使该标题不再换页后显示
 = 附录B： XX <no-2side-pagebreak>
 附录是对于一些不宜放在正文中，但有参考价值的内容，可编入毕业设计（论文）的附录中，例如公式的推演、编写的程序等；当文章中引用的符号较多时，便于读者查阅，可以编写一个符号说明，注明符号代表的意义，也可作为附录的内容。一般附录放在全文最后。
