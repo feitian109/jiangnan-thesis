@@ -105,7 +105,7 @@
   text(size: 字号.小四, font: fonts.宋体, weight: bold-level, spacing: 4pt * 2)[编 号]
   v(字号.一号 * 1.5)
   // 校名
-  image("../assets/vi/jnu-name.png")
+  image("../assets/vi/jnu-name.png", height: 60pt)
   v(字号.一号 * 1.5)
 
   text(
