@@ -22,11 +22,10 @@ Typst 源文件： [template\thesis.typ](https://github.com/feitian109/jiangnan-
 ## 上手（推荐使用VS Code）
 
 1. 将该项目克隆到本地
-2. 安装 [Typst's CLI](https://github.com/typst/typst?tab=readme-ov-file#installation)
-3. VS Code 安装 Typst LSP 和 Typst Preview 插件
-4. 打开 `template\thesis.typ`
-5. 按 `(Ctrl-K, V)` 启动预览界面
-6. Typst LSP 插件会在你保存文件时自动编译 PDF 文件
+2. VS Code 安装 Tinymist Typst 插件
+3. 打开 `template\thesis.typ`
+4. 按下 `Ctrl-K` ，再按 `V` 启动预览界面
+5. 按 `Ctrl-Shift-P`， 输入并运行 `Typst: Export the currently open file as PDF` 可以将当前 typst 源文件编译为 PDF
 
 ## 提示
 
