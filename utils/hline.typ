@@ -1,4 +1,4 @@
 // 一条水平横线
 #let hline() = {
-  line(length: 100%)
+  line(stroke: 0.5pt, length: 100%)
 }

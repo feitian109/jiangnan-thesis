@@ -1,8 +1,8 @@
 #import "../utils/style.typ": 字号, 字体
 #import "@preview/a2c-nums:0.0.1": int-to-cn-simple-num
 
-// 本科生封面
-#let bachelor-cover(
+// 课程设计封面
+#let coursework-cover(
   // documentclass 传入的参数
   twoside: true,
   fonts: (:),
@@ -47,6 +47,10 @@
   }
 
   // 3.  内置辅助函数
+  let blank-line = {
+    grid.cell(colspan: 4, text(size:字号.小二,"　"))
+  }
+
   let info-key(key) = {
     text(
       font: fonts.at(info-key-font),
@@ -96,26 +100,21 @@
   } else {
     (top: 1.65cm, bottom: 2cm, x: 3.17cm)
   })
-
+  
   // 居中对齐
   set align(center)
 
-  h(10em)
-  h(4pt * 2 * 10)
-  text(size: 字号.小四, font: fonts.宋体, weight: bold-level, spacing: 4pt * 2)[编 号]
-  v(字号.一号 * 1.5)
-  // 校名
-  image("../assets/vi/jnu-name.png", height: 60pt)
-  v(字号.一号 * 1.5)
+  v(120pt)
 
+  // 文档标题
   text(
     size: 32pt,
     font: fonts.宋体,
-    spacing: 2.5pt * 1.9,
     weight: bold-level,
-  )[本 科 生 毕 业 设 计 （ 论 文 ）]
+    info.doc-title
+  )
 
-  v(字号.一号 * 1.5)
+  v(120pt)
 
   set grid(row-gutter: 字号.二号 * 1.3)
   grid(
@@ -123,7 +122,6 @@
       info-key("title"),
       ..info.title.map((s) => info-long-value("title", s)).intersperse(info-key("blank")),
   )
-
 
   v(字号.一号 * 2)
 
@@ -146,13 +144,14 @@
       info-long-value("student-id", info.student-id),
       info-key("author"),
       info-long-value("author", info.author),
-      info-key("supervisor"),
-      info-long-value("supervisor", info.supervisor.at(0) + "  " + info.supervisor.at(1)),
-      info-key("supervisor-ii"), 
-      (if info.supervisor-ii != () {
-        info-long-value("supervisor-ii", info.supervisor-ii.at(0) + "  " + info.supervisor-ii.at(1))
-      } else {
-        info-long-value("supervisor-ii","")
+
+      ..(for key in ("supervisor", "supervisor-ii") {
+        if info.at(key) != (){(
+          info-key(key),
+          info-long-value(key, info.at(key).at(0) + "  " + info.at(key).at(1))
+          )} else{(
+            blank-line,
+          )}
       })
     )
   )

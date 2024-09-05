@@ -8,10 +8,7 @@
   size: 字号.小四,
   lang: "zh",
 ) = {
-  // 1. 默认参数
-  fonts = 字体 + fonts
-
-  // 2. 辅助函数
+  // 1. 辅助函数
   let display-font(cjk-name, latin-name) = [
     #set text(font: fonts.at(cjk-name))
 
@@ -24,7 +21,7 @@
     *#cjk-name (#latin-name Latin Bold): The fanfare of birds announces the morning.*
   ]
 
-  // 3. 正式渲染
+  // 2. 正式渲染
   pagebreak(weak: true, to: if twoside { "odd" })
   set text(size: size, lang: lang)
 

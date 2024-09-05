@@ -1,18 +1,20 @@
-#import "@preview/anti-matter:0.0.2": anti-matter
+#import "../utils/style.typ": 字体, 字号
 
-// 前言，重置页面计数器
-#let preface(
-  // documentclass 传入的参数
-  twoside: false,
-  // 其他参数
-  spec: (front: "I", inner: "1", back: "I"),
-  ..args,
-  it,
-) = {
-  // 分页
-  if (twoside) {
-    pagebreak() + " "
-  }
-  counter(page).update(0)
-  anti-matter(spec: spec, ..args, it)
+#let preface(fonts: (:), twoside: true, it) = {
+  // 边距
+  set page(
+    margin: if (twoside) {
+      (x: 2cm, inside: 2cm + 0.5cm, outside: 2cm)
+    } else {
+      (x: 2cm, y: 2cm)
+    },
+    //设置前言页码
+    footer: context[
+      #set align(center)
+      #set text(font: fonts.宋体, size: 字号.五号)
+      #counter(page).display("I")
+    ],
+  )
+   
+  it
 }
