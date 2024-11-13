@@ -28,7 +28,7 @@
   degree: "academic",
 
   // 双面模式，会加入空白页，便于打印
-  twoside: false,
+  twoside: true,
 
   // 盲审模式
   anonymous: false,
