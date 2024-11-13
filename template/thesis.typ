@@ -7,30 +7,26 @@
   // 布局函数
   twoside, doc, preface, mainmatter, mainmatter-end, appendix,
   // 页面函数
-  fonts-display-page, cover, abstract, abstract-en, bilingual-bibliography,
-  outline-page, list-of-figures, list-of-tables, notation, acknowledgement,
+  fonts-display-page, cover, abstract, abstract-en, outline-page, bilingual-bibliography, acknowledgement,
 ) = documentclass(
-  // doctype: "bachelor",  // "bachelor" | "master" | "doctor" | "postdoc", 文档类型，默认为本科生 bachelor
-  // degree: "academic",  // "academic" | "professional", 学位类型，默认为学术型 academic
-  // anonymous: true,  // 盲审模式
-  twoside: true,  // 双面模式，会加入空白页，便于打印
+  // 文档类型，默认为本科生 bachelor
+  doctype: "bachelor",
+
+  // 双面模式，会加入空白页，便于打印，
+  // 江南大学本科毕业设计要求双面打印，此文档为了方便浏览将其设为 false
+  twoside: false,
+
   // 可自定义字体，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
-  // fonts: (楷体: ("Times New Roman", "FZKai-Z03S")),
+  fonts: (宋体: ("Times New Roman", "SimSun"), 黑体:("Arial", "SimHei")),
+
   info: (
     title: ("本科毕业设计（论文）题目", "此行若无内容，横线保留"),
-    title-en: "My Title in English",
-    grade: "20XX",
+    department: "通信与控制工程",
+    major: "自动化",
     student-id: "34567890",
     author: "梁溪媛",
-    author-en: "Ming Xing",
-    department: "通信与控制工程",
-    department-en: "School of Chemistry and Chemical Engineering",
-    major: "自动化",
-    major-en: "Chemistry",
     supervisor: ("常广溪", "教授"),
-    supervisor-en: "Professor My Supervisor",
     supervisor-ii: ("江南", "讲师"),
-    supervisor-ii-en: "Professor My Supervisor",
     submit-date: datetime.today(),
   ),
   // 参考文献源
@@ -62,24 +58,11 @@
   Word Size: 12. (same as “小四”).
 ]
 
-
 // 目录
 #outline-page()
 
-// 插图目录
-// #list-of-figures()
-
-// 表格目录
-// #list-of-tables()
-
 // 正文
 #show: mainmatter
-
-// 符号表
-// #notation[
-//   / DFT: 密度泛函理论 (Density functional theory)
-//   / DMRG: 密度矩阵重正化群密度矩阵重正化群密度矩阵重正化群 (Density-Matrix Reformation-Group)
-// ]
 
 = Typst 模板使用说明
 == 列表
