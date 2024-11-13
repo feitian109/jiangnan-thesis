@@ -20,11 +20,11 @@
 
 #let 字体 = (
   // 宋体，属于「有衬线字体」，一般可以等同于英文中的 Serif Font
-  // 这一行分别是「新罗马体（有衬线英文字体）」、「思源宋体（简体）」、「思源宋体」、「宋体（Windows）」、「宋体（MacOS）」
-  宋体: ("Times New Roman", "Source Han Serif SC", "Source Han Serif", "Noto Serif CJK SC", "SimSun", "Songti SC", "STSongti"),
+  // 这一行分别是「新罗马体（有衬线英文字体）」、「宋体（Windows）」、「思源宋体（简体）」、「思源宋体」、「宋体（MacOS）」
+  宋体: ("Times New Roman", "SimSun", "Source Han Serif SC", "Source Han Serif", "Noto Serif CJK SC", "Songti SC", "STSongti"),
   // 黑体，属于「无衬线字体」，一般可以等同于英文中的 Sans Serif Font
-  // 这一行分别是「Arial（无衬线英文字体）」、「思源黑体（简体）」、「思源黑体」、「黑体（Windows）」、「黑体（MacOS）」
-  黑体: ("Arial", "Source Han Sans SC", "Source Han Sans", "Noto Sans CJK SC", "SimHei", "Heiti SC", "STHeiti"),
+  // 这一行分别是「Arial（无衬线英文字体）」、「黑体（Windows）」、「思源黑体（简体）」、「思源黑体」、「黑体（MacOS）」
+  黑体: ("Arial", "SimHei", "Source Han Sans SC", "Source Han Sans", "Noto Sans CJK SC", "Heiti SC", "STHeiti"),
   // 楷体
   楷体: ("Times New Roman", "KaiTi", "Kaiti SC", "STKaiti", "FZKai-Z03S", "Noto Serif CJK SC"),
   // 仿宋
