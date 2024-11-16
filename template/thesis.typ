@@ -12,9 +12,15 @@
   // 文档类型，默认为本科生 bachelor
   doctype: "bachelor",
 
+  // 学位类型，默认为学术型 academic
+  degree: "academic",
+
   // 双面模式，会加入空白页，便于打印，
   // 江南大学本科毕业设计要求双面打印，此文档为了方便浏览将其设为 false
   twoside: false,
+
+  // 盲审模式
+  anonymous: false,
 
   // 可自定义字体，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   // 所有字体的 fallback 顺序可以在`utils\style.typ`中修改
@@ -32,6 +38,7 @@
     supervisor-ii: ("江南", "讲师"),
     submit-date: datetime.today(),
   ),
+
   // 参考文献源
   bibliography: bibliography.with("ref.bib"),
 )
