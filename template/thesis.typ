@@ -17,7 +17,10 @@
   twoside: false,
 
   // 可自定义字体，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
-  fonts: (宋体: ("Times New Roman", "SimSun"), 黑体:("Arial", "SimHei")),
+  // 所有字体的 fallback 顺序可以在`utils\style.typ`中修改
+  // 江南大学毕业论文模板中规定所有字母与数字的字体为 Times New Roman，
+  // 全文的汉字字体为宋体
+  fonts: (宋体: ("Times New Roman", "SimSun"), 黑体:("SimHei")),
 
   info: (
     title: ("本科毕业设计（论文）题目", "此行若无内容，横线保留"),
