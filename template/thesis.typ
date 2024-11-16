@@ -1,4 +1,4 @@
-#import "../lib.typ": documentclass, indent
+#import "../lib.typ": documentclass, indent, show-cn-fakebold
 
 // 你首先应该安装 fonts/FangZheng 里的所有字体，
 // 如果是 Web App 上编辑，你应该手动上传这些字体文件，否则不能正常使用「楷体」和「仿宋」，导致显示错误。
@@ -38,6 +38,9 @@
 
 // 文稿设置
 #show: doc
+// 由于 SimSun 字体没有字重，需要使用使用伪粗体显示加粗
+// 如果你的中文字体包含了字重，可以将下面这行注释掉
+#show: show-cn-fakebold
 
 // 字体展示测试页
 // #fonts-display-page()
