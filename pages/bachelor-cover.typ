@@ -36,13 +36,9 @@
   ) + info
 
   // 2.  对参数进行处理
-  // 2.1 如果是字符串，则使用换行符将标题分隔为列表
-  if type(info.title) == str {
-    info.title = info.title.split("\n")
-  }
-  // 2.2 根据 min-title-lines 填充标题
-  info.title = info.title + range(min-title-lines - info.title.len()).map((it) => "　")
-  // 2.3 处理提交日期
+  // 2.1 根据 min-title-lines 填充标题
+  info.title = info.title + range(min-title-lines - info.title.len()).map(it => "　")
+  // 2.2 处理提交日期
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
   }

@@ -30,20 +30,14 @@
     supervisor: ("李四", "教授"),
   ) + info
 
-  // 2.  对参数进行处理
-  // 2.1 如果是字符串，则使用换行符将标题分隔为列表
-  if type(info.title) == str {
-    info.title = info.title.split("\n")
-  }
-
-  // 3.  内置辅助函数
+  // 2.  内置辅助函数
   let info-value(key, body) = {
     if (not anonymous or (key not in anonymous-info-keys)) {
       body
     }
   }
 
-  // 4.  正式渲染
+  // 3.  正式渲染
   pagebreak(weak: true, to: if twoside { "odd" })
 
   [

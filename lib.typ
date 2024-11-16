@@ -40,7 +40,7 @@
   fonts: (:),
   info: (:),
 ) = {
-  // 默认参数
+  // 1.  默认参数
   fonts = 字体 + fonts
   info = (
     title: ("本科毕业设计（论文）题目", "此行若无内容，横线保留"),
@@ -52,6 +52,12 @@
     supervisor-ii: ("江南", "讲师"),
     submit-date: datetime.today(),
   ) + info
+
+  // 2.  预处理
+  // 2.1 如果是字符串，则使用换行符将标题分隔为列表
+  if type(info.title) == str {
+    info.title = info.title.split("\n")
+  }
 
   (
     // 将传入参数再导出
