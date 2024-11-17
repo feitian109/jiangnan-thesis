@@ -98,12 +98,9 @@
   })
 
   // 双页显示
-  pagebreak(
-    weak: true,
-    to: if twoside {
-      "odd"
-    },
-  )
+  if twoside {
+    pagebreak(weak: true, to: "odd")
+  }
 
   // 居中对齐
   set align(center)
@@ -184,4 +181,6 @@
   text(font: fonts.宋体)[ 年 ]
   text(font: fonts.黑体, int-to-cn-num(info.submit-date.month()))
   text(font: fonts.宋体)[ 月]
+
+  pagebreak()
 }
