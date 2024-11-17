@@ -17,6 +17,9 @@
   // 学位类型，默认为学术型 academic
   degree: "academic",
 
+  // 显示页眉
+  display-header: true,
+
   // 双面模式，会加入空白页，便于打印，
   // 江南大学本科毕业设计要求双面打印，此文档为了方便浏览将其设为 false
   twoside: false,

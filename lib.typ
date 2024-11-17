@@ -27,6 +27,9 @@
   // 学位类型，默认为学术型 acedemic
   degree: "academic",
 
+  // 显示页眉
+  display-header: true,
+
   // 双面模式，会加入空白页，便于打印
   twoside: true,
 
@@ -63,6 +66,7 @@
     // 将传入参数再导出
     doctype: doctype,
     degree: degree,
+    display-header: display-header,
     twoside: twoside,
     anonymous: anonymous,
     bibliography: bibliography,
@@ -137,11 +141,10 @@
     abstract: (..args) => {
       if doctype == "bachelor" {
         bachelor-abstract(
-          anonymous: anonymous,
+          display-header: display-header,
           twoside: twoside,
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),
-          info: info + args.named().at("info", default: (:)),
         )
       }
     },
