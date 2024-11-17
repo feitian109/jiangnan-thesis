@@ -153,11 +153,10 @@
     abstract-en: (..args) => {
       if doctype == "bachelor" {
         bachelor-abstract-en(
-          anonymous: anonymous,
+          display-header: display-header,
           twoside: twoside,
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),
-          info: info + args.named().at("info", default: (:)),
         )
       }
     },

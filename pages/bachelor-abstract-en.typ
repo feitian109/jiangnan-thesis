@@ -1,81 +1,52 @@
-#import "../utils/custom-cuti.typ": fakebold
-#import "../utils/style.typ": 字号, 字体
-#import "../utils/indent.typ": fake-par
-#import "../utils/double-underline.typ": double-underline
+#import "../utils/style.typ": 字号
 #import "../utils/invisible-heading.typ": invisible-heading
 
 // 本科生英文摘要页
 #let bachelor-abstract-en(
   // documentclass 传入的参数
-  anonymous: false,
-  twoside: false,
+  display-header: true,
+  twoside: true,
   fonts: (:),
-  info: (:),
   // 其他参数
   keywords: (),
   outline-title: "ABSTRACT",
-  outlined: false,
-  anonymous-info-keys: ("author-en", "supervisor-en", "supervisor-ii-en"),
-  leading: 1.28em,
-  spacing: 1.38em,
+  leading: 1em,
+  spacing: 1em,
+  stroke-width: 0.5pt,
+  bold-level: "bold",
   body,
 ) = {
-  // 1.  默认参数
-  fonts = 字体 + fonts
-  info = (
-    title-en: "NJU Thesis Template for Typst",
-    author-en: "Zhang San",
-    department-en: "XX Department",
-    major-en: "XX Major",
-    supervisor-en: "Professor Li Si",
-  ) + info
-
-  // 2.  对参数进行处理
-  // 2.1 如果是字符串，则使用换行符将标题分隔为列表
-  if type(info.title-en) == str {
-    info.title-en = info.title-en.split("\n")
+  // 双页显示
+  if twoside {
+    pagebreak(weak: true, to: "odd")
   }
 
-  // 3.  内置辅助函数
-  let info-value(key, body) = {
-    if (not anonymous or (key not in anonymous-info-keys)) {
-      body
-    }
-  }
+  // 处理页眉
+  set page(header: if display-header {
+    set text(font: fonts.宋体, size: 字号.小五)
+    align(center, stack(outline-title, v(0.4em), line(length: 100%, stroke: stroke-width)))
+  })
 
-  // 4.  正式渲染
-  [
-    #pagebreak(weak: true, to: if twoside { "odd" })
+  // 标记一个不可见的标题用于 pdf 目录生成
+  invisible-heading(level: 1, bookmarked: true, outlined: false, outline-title)
 
-    #set text(font: fonts.楷体, size: 字号.小四)
-    #set par(leading: leading, justify: true)
-    #show par: set block(spacing: spacing)
+  // 标题
+  set par(spacing: 0pt)
+  align(
+    center,
+    text(font: fonts.宋体, size: 字号.三号, weight: bold-level, baseline: -0.3em)[ABSTRACT],
+  )
 
-    // 标记一个不可见的标题用于目录生成
-    #invisible-heading(level: 1, outlined: outlined, outline-title)
+  // 正文
+  set text(font: fonts.宋体, size: 字号.小四)
+  set par(first-line-indent: 2em, leading: leading, spacing: spacing, justify: true)
+  body
 
-    #align(center)[
-      #set text(size: 字号.小二, weight: "bold")
+  v(1em)
 
-      #v(1em)
+  //关键词
+  text(weight: bold-level)[Keywords：]
+  (("",) + keywords.intersperse("; ")).sum()
 
-      #double-underline[#fakebold[南京大学本科生毕业论文（设计、作品）英文摘要]]
-    ]
-
-    #v(2pt)
-
-    THESIS: #info-value("title-en", (("",)+ info.title-en).sum())
-
-    DEPARTMENT: #info-value("department-en", info.department-en)
-
-    SPECIALIZATION: #info-value("major-en", info.major-en)
-
-    UNDERGRADUATE: #info-value("author-en", info.author-en)
-
-    ABSTRACT: #body
-
-    #v(1em)
-
-    KEYWORDS: #(("",)+ keywords.intersperse("; ")).sum()
-  ]
+  pagebreak()
 }
