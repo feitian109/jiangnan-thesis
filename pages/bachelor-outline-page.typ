@@ -1,61 +1,84 @@
 #import "@preview/outrageous:0.1.0"
 #import "../utils/invisible-heading.typ": invisible-heading
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字号
 
 // 本科生目录生成
 #let bachelor-outline-page(
   // documentclass 传入参数
-  twoside: false,
+  display-header: true,
+  twoside: true,
   fonts: (:),
   // 其他参数
-  depth: 4,
-  title: "目　　录",
-  outlined: false,
-  title-vspace: 0pt,
+  depth: 3,
+  title: "目　录",
+  title-vspace: 字号.四号 * 1.25,
   title-text-args: auto,
+  outline-title: "目录",
+  bold-level: "bold",
+  stroke-width: 0.5pt,
   // 引用页数的字体，这里用于显示 Times New Roman
   reference-font: auto,
   reference-size: 字号.小四,
   // 字体与字号
   font: auto,
-  size: (字号.四号, 字号.小四),
+  size: (字号.四号, 字号.小四, 字号.五号),
   // 垂直间距
-  vspace: (25pt, 14pt),
-  indent: (0pt, 18pt, 28pt),
+  vspace: (1.25em, 1.25em),
+  indent: (0em, 1em, 1em),
   // 全都显示点号
   fill: (auto,),
   ..args,
 ) = {
   // 1.  默认参数
-  fonts = 字体 + fonts
   if (title-text-args == auto) {
-    title-text-args = (font: fonts.宋体, size: 字号.三号, weight: "bold")
+    title-text-args = (font: fonts.宋体, size: 字号.三号, weight: bold-level, baseline: -0.3em)
   }
+
   // 引用页数的字体，这里用于显示 Times New Roman
   if (reference-font == auto) {
     reference-font = fonts.宋体
   }
+
   // 字体与字号
   if (font == auto) {
-    font = (fonts.黑体, fonts.宋体)
+    font = (fonts.宋体,)
   }
 
-  // 2.  正式渲染
-  pagebreak(weak: true, to: if twoside { "odd" })
+  // 2.  处理页码和页眉
+  set page(
+    footer: context {
+      set align(center)
+      set text(font: fonts.宋体, size: 字号.五号)
+      counter(page).display("i")
+    },
+    header: if display-header {
+      set text(font: fonts.宋体, size: 字号.小五)
+      align(center, stack(outline-title, v(0.4em), line(length: 100%, stroke: stroke-width)))
+    },
+  )
+
+  // 3.  正式渲染
+  // 双页显示
+  if twoside {
+    pagebreak(weak: true, to: "odd")
+  }
+
+  // 重置页码
+  counter(page).update(1)
+
+  // 标记一个不可见的标题用于 pdf 目录生成
+  invisible-heading(level: 1, bookmarked: true, outlined: false, outline-title)
+
+  align(center, text(..title-text-args, title))
+
+  v(title-vspace)
 
   // 默认显示的字体
   set text(font: reference-font, size: reference-size)
 
-  {
-    set align(center)
-    text(..title-text-args, title)
-    // 标记一个不可见的标题用于目录生成
-    invisible-heading(level: 1, outlined: outlined, title)
-  }
-
-  v(title-vspace)
-
-  show outline.entry: outrageous.show-entry.with(
+  show outline.entry: outrageous
+    .show-entry
+    .with(
     // 保留 Typst 基础样式
     ..outrageous.presets.typst,
     body-transform: (level, it) => {
@@ -77,4 +100,5 @@
   // 显示目录
   outline(title: none, depth: depth)
 
+  pagebreak()
 }

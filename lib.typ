@@ -164,6 +164,7 @@
     // 目录页
     outline-page: (..args) => {
       bachelor-outline-page(
+        display-header: display-header,
         twoside: twoside,
         ..args,
         fonts: fonts + args.named().at("fonts", default: (:)),
