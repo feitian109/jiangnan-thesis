@@ -1,5 +1,6 @@
 #import "../utils/style.typ": 字号
 #import "@preview/a2c-nums:0.0.1": int-to-cn-num, int-to-cn-simple-num
+#import "../utils/invisible-heading.typ": invisible-heading
 
 // 本科生封面
 #let bachelor-cover(
@@ -104,6 +105,9 @@
 
   // 居中对齐
   set align(center)
+
+  // 标记一个不可见的标题用于 pdf 目录生成
+  invisible-heading(level: 1, bookmarked: true, outlined: false, "封面")
 
   // 编号
   set text(size: 字号.小四)
