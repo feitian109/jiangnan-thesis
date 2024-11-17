@@ -81,6 +81,7 @@
     preface: (..args) => {
       preface(
         twoside: twoside,
+        fonts: fonts,
         ..args,
       )
     },
