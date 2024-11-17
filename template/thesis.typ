@@ -4,8 +4,10 @@
 // 如果是 Web App 上编辑，你应该手动上传这些字体文件，否则不能正常使用「楷体」和「仿宋」，导致显示错误。
 
 #let (
+  // 参数
+  twoside, fonts,
   // 布局函数
-  twoside, doc, preface, mainmatter, mainmatter-end, appendix,
+  doc, preface, mainmatter, mainmatter-end, appendix,
   // 页面函数
   fonts-display-page, cover, abstract, abstract-en, outline-page, bilingual-bibliography, acknowledgement,
 ) = documentclass(
