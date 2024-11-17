@@ -81,8 +81,8 @@
     preface: (..args) => {
       preface(
         twoside: twoside,
-        fonts: fonts,
         ..args,
+        fonts: fonts + args.named().at("fonts", default: (:)),
       )
     },
 
