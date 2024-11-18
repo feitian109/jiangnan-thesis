@@ -7,7 +7,7 @@
   // 参数
   twoside, fonts,
   // 布局函数
-  doc, preface, mainmatter, mainmatter-end, appendix,
+  doc, preface, mainmatter, appendix,
   // 页面函数
   fonts-display-page, cover, abstract, abstract-en, outline-page, bilingual-bibliography, acknowledgement,
 ) = documentclass(
@@ -298,7 +298,3 @@ XXX
 
 = 附录B： XX
 附录是对于一些不宜放在正文中，但有参考价值的内容，可编入毕业设计（论文）的附录中，例如公式的推演、编写的程序等；当文章中引用的符号较多时，便于读者查阅，可以编写一个符号说明，注明符号代表的意义，也可作为附录的内容。一般附录放在全文最后。
-
-// 正文结束标志，不可缺少
-// 这里放在附录后面，使得页码能正确计数
-#mainmatter-end()

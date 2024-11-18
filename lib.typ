@@ -1,4 +1,3 @@
-#import "@preview/anti-matter:0.0.2": anti-inner-end as mainmatter-end
 #import "layouts/doc.typ": doc
 #import "layouts/preface.typ": preface
 #import "layouts/mainmatter.typ": mainmatter
@@ -99,13 +98,6 @@
           fonts: fonts + args.named().at("fonts", default: (:)),
         )
       }
-    },
-
-    // 正文结束
-    mainmatter-end: (..args) => {
-      mainmatter-end(
-        ..args,
-      )
     },
 
     // 附录

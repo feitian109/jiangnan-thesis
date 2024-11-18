@@ -1,4 +1,3 @@
-#import "@preview/anti-matter:0.0.2": anti-front-end
 #import "@preview/i-figured:0.2.4"
 #import "../utils/style.typ": 字号, 字体
 #import "../utils/custom-numbering.typ": custom-numbering
@@ -45,9 +44,6 @@
   ..args,
   it,
 ) = {
-  // 0.  标志前言结束
-  anti-front-end()
-
   // 1.  默认参数
   fonts = 字体 + fonts
   if (text-args == auto) {
