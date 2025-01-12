@@ -67,6 +67,11 @@
     submit-date: datetime.today(),
   ) + info
 
+  // 根据文档类型设置 doc-title
+  if doctype == "bachelor" {
+    info.doc-title = "江南大学学士学位论文"
+  }
+
   // 2.  预处理
   // 2.1 如果是字符串，则使用换行符将标题分隔为列表
   if type(info.title) == str {
@@ -106,8 +111,10 @@
       if doctype == "bachelor" {
         mainmatter(
           twoside: twoside,
+          display-header: display-header,
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),
+          info: info + args.named().at("info", default: (:)),
         )
       }
     },
