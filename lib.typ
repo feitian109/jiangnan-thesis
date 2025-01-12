@@ -194,7 +194,6 @@
     acknowledgement: (..args) => {
       acknowledgement(
         anonymous: anonymous,
-        twoside: twoside,
         ..args,
       )
     },
