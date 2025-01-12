@@ -44,6 +44,12 @@
     font = (fonts.宋体,)
   }
 
+  // 双页显示
+  // 注意：必须在设置页码样式之前
+  if twoside {
+    pagebreak(weak: true, to: "odd")
+  }
+
   // 2.  处理页码和页眉
   set page(
     footer: context {
@@ -58,11 +64,6 @@
   )
 
   // 3.  正式渲染
-  // 双页显示
-  if twoside {
-    pagebreak(weak: true, to: "odd")
-  }
-
   // 重置页码
   counter(page).update(1)
 
