@@ -44,6 +44,18 @@
 ) = {
   // 1.  默认参数
   fonts = 字体 + fonts
+
+  /* 
+  // 在 Typst 未来支持 warning suppress 后启用
+  // 合并用户字体和 fallback 的字体
+  for item in 字体 {
+    let key = item.at(0)
+    let value = item.at(1)
+
+    fonts.insert(key,(fonts.at(key, default:()) + value).dedup())
+  }
+  */
+
   info = (
     title: ("本科毕业设计（论文）题目", "此行若无内容，横线保留"),
     department: "通信与控制工程",
