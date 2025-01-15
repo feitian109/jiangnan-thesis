@@ -122,7 +122,9 @@
     // 附录
     appendix: (..args) => {
       appendix(
+        display-header: display-header,
         ..args,
+        fonts: fonts + args.named().at("fonts", default: (:)),
       )
     },
 
