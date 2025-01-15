@@ -10,14 +10,14 @@
 
 ## 提示
 - 该模板存在**不被认可的风险**
-- 也许你可以在 [modern-nju-thesis](https://github.com/nju-lug/modern-nju-thesis) 找到一些使用 Typst 的提示
+- 也许你可以在上游 [modern-nju-thesis](https://github.com/nju-lug/modern-nju-thesis) 找到一些使用 Typst 的提示
 - 更多关于 Typst 的内容: [Typst](https://typst.app/)
 
 ## 参考
 模板制作参考文档： [reference\毕业论文模板.docx](https://github.com/feitian109/jiangnan-thesis/blob/main/reference/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87%E6%A8%A1%E6%9D%BF.docx)
 
 ## 致谢
-- 感谢 [@OrangeX4](https://github.com/OrangeX4) 与 [@Yanglin Xun](https://github.com/FurryAcetylCoA) 开发的 [modern-nju-thesis](https://github.com/nju-lug/modern-nju-thesis) Typst 模板
+- 感谢 [@OrangeX4](https://github.com/OrangeX4) 与其他贡献者开发的 [modern-nju-thesis](https://github.com/nju-lug/modern-nju-thesis) Typst 模板
 
 ## License
 This project is licensed under the MIT License.
