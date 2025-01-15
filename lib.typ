@@ -92,6 +92,7 @@
     // 页面布局
     doc: (..args) => {
       doc(
+        twoside: twoside,
         ..args,
         info: info + args.named().at("info", default: (:)),
       )

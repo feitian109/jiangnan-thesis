@@ -14,17 +14,13 @@
   }
 
   // 设置页边距
-  set page(margin: if twoside {
-    (inside: 2cm + 0.5cm, outside: 2cm, y: 2cm)
-  } else {
-    2cm
-  },
-  // 设置前言部分的页码
-  footer: context {
-    set align(center)
-    set text(font: fonts.宋体, size: 字号.五号)
-    counter(page).display("I")
-  }
+  set page(
+    // 设置前言部分的页码
+    footer: context {
+      set align(center)
+      set text(font: fonts.宋体, size: 字号.五号)
+      counter(page).display("I")
+    },
   )
 
   // 更新页码
