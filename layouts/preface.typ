@@ -23,6 +23,22 @@
     },
   )
 
+  // 自定义一级标题
+  show heading: it => {
+    if it.level == 1 {
+      set text(font: fonts.宋体, size: 字号.三号)
+      align(
+        center,
+        block(
+          inset: (top: -0.4em, bottom: 0.4em),
+          text(weight: "bold", it),
+        ),
+      )
+    } else {
+      it
+    }
+  }
+
   // 更新页码
   counter(page).update(1)
   it

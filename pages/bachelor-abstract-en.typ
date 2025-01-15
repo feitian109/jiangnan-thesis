@@ -1,6 +1,7 @@
 #import "../utils/style.typ": 字号
 #import "../utils/invisible-heading.typ": invisible-heading
 #import "../utils/custom-header.typ": custom-header
+#import "../utils/indent.typ": fake-par
 
 // 本科生英文摘要页
 #let bachelor-abstract-en(
@@ -33,18 +34,15 @@
   invisible-heading(level: 1, bookmarked: true, outlined: false, outline-title)
 
   // 标题
-  set par(spacing: 0pt)
-  align(
-    center,
-    text(font: fonts.宋体, size: 字号.三号, weight: bold-level, baseline: -0.3em)[ABSTRACT],
-  )
+  heading(level: 1, bookmarked: false, outlined: false)[ABSTRACT]
 
   // 正文
   set text(font: fonts.宋体, size: 字号.小四)
   set par(first-line-indent: 2em, leading: leading, spacing: spacing, justify: true)
+  fake-par
   body
 
-  v(1em)
+  v(1.8em)
 
   //关键词
   text(weight: bold-level)[Keywords：]

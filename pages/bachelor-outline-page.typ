@@ -12,7 +12,6 @@
   depth: 3,
   title: "目　录",
   title-vspace: 字号.四号 * 1.25,
-  title-text-args: auto,
   outline-title: "目录",
   bold-level: "bold",
   stroke-width: 0.5pt,
@@ -30,10 +29,6 @@
   ..args,
 ) = {
   // 1.  默认参数
-  if (title-text-args == auto) {
-    title-text-args = (font: fonts.宋体, size: 字号.三号, weight: bold-level, baseline: -0.3em)
-  }
-
   // 引用页数的字体，这里用于显示 Times New Roman
   if (reference-font == auto) {
     reference-font = fonts.宋体
@@ -70,7 +65,8 @@
   // 标记一个不可见的标题用于 pdf 目录生成
   invisible-heading(level: 1, bookmarked: true, outlined: false, outline-title)
 
-  align(center, text(..title-text-args, title))
+  // 标题
+  heading(level: 1, bookmarked: false, outlined: false, title)
 
   v(title-vspace)
 

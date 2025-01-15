@@ -27,7 +27,6 @@
   heading-below: (0.6em, 1em),
   heading-pagebreak: (true, false),
   heading-align: (center, auto),
-  heading-baseline: (-0.3em, 0em),
   // 页眉
   stroke-width: 0.5pt,
   reset-footnote: true,
@@ -98,7 +97,6 @@
       font: array-at(heading-font, it.level),
       size: array-at(heading-size, it.level),
       weight: array-at(heading-weight, it.level),
-      baseline: array-at(heading-baseline, it.level),
       ..unpairs(heading-text-args-lists.map(pair => (pair.at(0), array-at(pair.at(1), it.level)))),
     )
     set block(
