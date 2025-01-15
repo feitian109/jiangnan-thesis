@@ -11,7 +11,7 @@
     center,
     stack(
       it,
-      v(0.4em),
+      v(0.5em),
       line(length: 100%, stroke: stroke-width + black),
     ),
   )
