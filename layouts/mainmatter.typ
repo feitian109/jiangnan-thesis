@@ -1,6 +1,7 @@
 #import "@preview/i-figured:0.2.4"
 #import "../utils/style.typ": 字号
 #import "../utils/custom-numbering.typ": custom-numbering
+#import "../utils/custom-header.typ": custom-header
 #import "../utils/indent.typ": fake-par
 #import "../utils/unpairs.typ": unpairs
 
@@ -136,27 +137,18 @@
   }
 
   // 6.  处理页眉
-  set page(..(
-    if display-header {
-      (
-        header: context {
-          set text(font: fonts.宋体, size: 字号.小五)
-          align(
-            center,
-            stack(
-              if (calc.odd(counter(page).get().at(0))) {
-                (("",) + info.title).sum()
-              } else {
-                info.doc-title
-              },
-              v(0.4em),
-              line(length: 100%, stroke: stroke-width + black),
-            ),
-          )
-        },
-      )
+  let header-content = context {
+    if (calc.odd(counter(page).get().at(0))) {
+      (("",) + info.title).sum()
+    } else {
+      info.doc-title
     }
-  ))
+  }
+  set page(
+    header: if display-header {
+      custom-header(fonts.宋体, header-content)
+    },
+  )
 
   // 7.  处理页码
   counter(page).update(1)

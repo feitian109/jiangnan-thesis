@@ -1,5 +1,6 @@
 #import "../utils/style.typ": 字号
 #import "../utils/invisible-heading.typ": invisible-heading
+#import "../utils/custom-header.typ": custom-header
 
 // 本科生中文摘要页
 #let bachelor-abstract(
@@ -22,10 +23,11 @@
   }
 
   // 处理页眉
-  set page(header: if display-header {
-    set text(font: fonts.宋体, size: 字号.小五)
-    align(center, stack(outline-title, v(0.4em), line(length: 100%, stroke: stroke-width)))
-  })
+  set page(
+    header: if display-header {
+      custom-header(fonts.宋体, outline-title)
+    },
+  )
 
   // 标记一个不可见的标题用于 pdf 目录生成
   invisible-heading(level: 1, bookmarked: true, outlined: false, outline-title)
