@@ -2,7 +2,6 @@
 #import "../utils/style.typ": 字号
 #import "../utils/custom-numbering.typ": custom-numbering
 #import "../utils/custom-header.typ": custom-header
-#import "../utils/indent.typ": fake-par
 #import "../utils/unpairs.typ": unpairs
 
 #let mainmatter(
@@ -15,7 +14,7 @@
   leading: 1em,
   spacing: 1em,
   justify: true,
-  first-line-indent: 2em,
+  first-line-indent: (amount: 2em, all: true),
   numbering: custom-numbering.with(first-level: "第1章 ", depth: 4, "1.1 "),
   // 正文字体与字号参数
   text-args: auto,
@@ -42,11 +41,11 @@
   it,
 ) = {
   // 1.  默认参数
-  if (text-args == auto) {
+  if text-args == auto {
     text-args = (font: fonts.宋体, size: 字号.小四)
   }
   // 1.1 字体与字号
-  if (heading-font == auto) {
+  if heading-font == auto {
     heading-font = (fonts.宋体,)
   }
   // 1.2 处理 heading- 开头的其他参数
@@ -104,13 +103,12 @@
       below: array-at(heading-below, it.level),
     )
     it
-    fake-par
   }
   // 4.3 标题居中与自动换页
   show heading: it => {
-    if (array-at(heading-pagebreak, it.level)) {
+    if array-at(heading-pagebreak, it.level) {
       // 如果打上了 no-auto-pagebreak 标签，则不自动换页
-      if ("label" not in it.fields() or str(it.label) != "no-auto-pagebreak") {
+      if "label" not in it.fields() or str(it.label) != "no-auto-pagebreak" {
         pagebreak(
           weak: true,
           ..(
@@ -121,7 +119,7 @@
         )
       }
     }
-    if (array-at(heading-align, it.level) != auto) {
+    if array-at(heading-align, it.level) != auto {
       set align(array-at(heading-align, it.level))
       it
     } else {
@@ -136,7 +134,7 @@
 
   // 6.  处理页眉
   let header-content = context {
-    if (calc.odd(counter(page).get().at(0))) {
+    if calc.odd(counter(page).get().at(0)) {
       (("",) + info.title).sum()
     } else {
       info.doc-title

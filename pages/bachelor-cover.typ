@@ -56,14 +56,14 @@
     }
   } else {
     // 2.3 二字姓名处理
-    if (info.author.clusters().len() == 2) {
+    if info.author.clusters().len() == 2 {
       info.author = info.author.first() + blank + info.author.last()
     }
 
     for key in ("supervisor", "supervisor-ii") {
       if info.at(key).len() != 0 {
         let tmp = info.at(key).at(0)
-        if (tmp.clusters().len() == 2) {
+        if tmp.clusters().len() == 2 {
           info.at(key).at(0) = tmp.first() + blank + tmp.last()
         }
       }
@@ -91,7 +91,7 @@
   }
 
   // 4.  正式渲染
-  set page(margin: if (twoside) {
+  set page(margin: if twoside {
     // 双页显示时，内侧需要留出 0.5cm 的装订线
     (top: 1.65cm, bottom: 2cm, inside: 3.17cm + 0.5cm, outside: 3.17cm)
   } else {
