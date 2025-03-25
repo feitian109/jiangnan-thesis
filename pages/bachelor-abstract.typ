@@ -1,7 +1,6 @@
 #import "../utils/style.typ": 字号
 #import "../utils/invisible-heading.typ": invisible-heading
 #import "../utils/custom-header.typ": custom-header
-#import "../utils/indent.typ": fake-par
 
 // 本科生中文摘要页
 #let bachelor-abstract(
@@ -41,8 +40,7 @@
 
   // 正文
   set text(font: fonts.宋体, size: 字号.小四)
-  set par(first-line-indent: 2em, leading: leading, spacing: spacing, justify: true)
-  fake-par
+  set par(first-line-indent: (amount: 2em, all: true), leading: leading, spacing: spacing, justify: true)
   body
 
   v(1.8em)

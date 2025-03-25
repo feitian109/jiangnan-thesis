@@ -236,7 +236,7 @@ $ U_o = t_"on" / (t_"on" + t_"off") E = t_"on" / T E = u E. $ <physics>
     [数值],
     table.hline(stroke: 0.5pt),
     [R],
-    [4$ohm$],
+    [4$Omega$],
     [L],
     [20mH],
     [E],
@@ -264,11 +264,6 @@ XXX
 == 不足之处及未来展望
 XXX
 
-// 手动分页
-#if twoside {
-  pagebreak() + " "
-}
-
 // 中英双语参考文献
 // 默认使用 gb-7714-2015-numeric 样式
 #bilingual-bibliography(full: true)
@@ -282,12 +277,6 @@ XXX
   感谢 Mordern NJUThesis Typst 模板。
 ]
 
-// 手动分页
-#if twoside {
-  pagebreak() + " "
-}
-
-
 // 附录
 #show: appendix
 
@@ -295,5 +284,6 @@ XXX
 // Typst 不支持加载两个bib，因此你只能在这里手打自己的成果
 [1]作者．文献题名[J]．刊名，出版年份，卷号(期号) ：起止页码．
 
-= 附录B： XX
+#pagebreak()
+= 附录B： XX <no-auto-pagebreak>
 附录是对于一些不宜放在正文中，但有参考价值的内容，可编入毕业设计（论文）的附录中，例如公式的推演、编写的程序等；当文章中引用的符号较多时，便于读者查阅，可以编写一个符号说明，注明符号代表的意义，也可作为附录的内容。一般附录放在全文最后。

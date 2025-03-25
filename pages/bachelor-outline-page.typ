@@ -1,4 +1,3 @@
-#import "@preview/outrageous:0.1.0"
 #import "../utils/invisible-heading.typ": invisible-heading
 #import "../utils/style.typ": 字号
 
@@ -22,20 +21,22 @@
   font: auto,
   size: (字号.四号, 字号.小四, 字号.五号),
   // 垂直间距
-  vspace: (1.25em, 1.25em),
+  above: (1.45em, 1.25em),
+  below: (1.45em, 1.25em),
   indent: (0em, 1em, 1em),
   // 全都显示点号
-  fill: (auto,),
+  fill: (repeat([.], gap: 0.15em),),
+  gap: .3em,
   ..args,
 ) = {
   // 1.  默认参数
   // 引用页数的字体，这里用于显示 Times New Roman
-  if (reference-font == auto) {
+  if reference-font == auto {
     reference-font = fonts.宋体
   }
 
   // 字体与字号
-  if (font == auto) {
+  if font == auto {
     font = (fonts.宋体,)
   }
 
@@ -73,25 +74,33 @@
   // 默认显示的字体
   set text(font: reference-font, size: reference-size)
 
-  show outline.entry: outrageous
-    .show-entry
-    .with(
-    // 保留 Typst 基础样式
-    ..outrageous.presets.typst,
-    body-transform: (level, it) => {
-      // 设置字体和字号
-      set text(
-        font: font.at(calc.min(level, font.len()) - 1),
-        size: size.at(calc.min(level, size.len()) - 1),
-      )
-      // 计算缩进
-      let indent-list = indent + range(level - indent.len()).map((it) => indent.last())
-      let indent-length = indent-list.slice(0, count: level).sum()
-      h(indent-length) + it
-    },
-    vspace: vspace,
-    fill: fill,
-    ..args,
+  // 目录样式
+  set outline(indent: level => indent.slice(0, calc.min(level + 1, indent.len())).sum())
+  show outline.entry: entry => block(
+    above: above.at(entry.level - 1, default: above.last()),
+    below: below.at(entry.level - 1, default: below.last()),
+    link(
+      entry.element.location(),
+      entry.indented(
+        none,
+        {
+          text(
+            font: font.at(entry.level - 1, default: font.last()),
+            size: size.at(entry.level - 1, default: size.last()),
+            {
+              if entry.prefix() not in (none, []) {
+                entry.prefix()
+                h(gap)
+              }
+              entry.body()
+            },
+          )
+          box(width: 1fr, inset: (x: .25em), fill.at(entry.level - 1, default: fill.last()))
+          entry.page()
+        },
+        gap: 0pt,
+      ),
+    ),
   )
 
   // 显示目录

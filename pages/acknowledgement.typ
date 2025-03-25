@@ -10,11 +10,11 @@
   outline-title: "致谢",
   body,
 ) = {
-  if (not anonymous) {
+  if not anonymous {
     // 标记一个不可见的标题用于 pdf 目录生成
     invisible-heading(level: 1, bookmarked: true, outlined: true, outline-title)
     [
-      #heading(level: 1, numbering: none, outlined: false, title) <no-auto-pagebreak>
+      #heading(level: 1, numbering: none, outlined: false, title)
     ]
     body
   }
